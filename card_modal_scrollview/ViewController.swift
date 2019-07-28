@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     private let interactor = CardPresentationInteractor()
     private let button = UIButton()
@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         button.backgroundColor = .black
         button.layer.cornerRadius = 8
         button.setTitle("Present Modal", for: .normal)
-        
     }
 
     @objc private func presentModal() {

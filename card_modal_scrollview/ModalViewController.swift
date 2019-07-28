@@ -28,7 +28,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         spacer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         spacer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         spacer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        spacer.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        spacer.heightAnchor.constraint(equalToConstant: 52).isActive = true
         
         view.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +44,14 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         header.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         header.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         header.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
+        
+        header.clipsToBounds = true
+        header.layer.cornerRadius = 12
+        header.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 12
+        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         addContentViewController(contentViewController)
         
@@ -84,7 +92,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         
         // convert y-position to downward pull progress (percentage)
         let translation = sender.translation(in: view)
-        let verticalMovement = translation.y / view.bounds.height
+        let verticalMovement = translation.y / contentView.bounds.height
         let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
         let downwardMovementPercent = fminf(downwardMovement, 1.0)
         let progress = CGFloat(downwardMovementPercent)

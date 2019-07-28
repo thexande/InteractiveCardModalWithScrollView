@@ -24,7 +24,7 @@ final class CardDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning
         
         containerView.insertSubview(dim, belowSubview: fromVC.view)
         dim.frame = containerView.frame
-        dim.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        dim.backgroundColor = UIColor.black.withAlphaComponent(0.6)
 
         UIView.animate(
             withDuration: transitionDuration(using: transitionContext),

@@ -34,7 +34,7 @@ final class PresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                        animations: {
                         // center the modal on the screen
                         toVC.view.center.y = UIScreen.main.bounds.height / 2
-                        self.dim.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                        self.dim.backgroundColor = UIColor.black.withAlphaComponent(0.6)
                         
         }, completion: { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
