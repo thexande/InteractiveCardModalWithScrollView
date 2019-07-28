@@ -5,12 +5,32 @@ protocol ScrollViewProviding {
     func setContentInset(_ inset: UIEdgeInsets)
 }
 
+final class ModalHeaderView: UIView {
+    
+    private let indicator = UIView()
+    private let background = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(background)
+        background.translatesAutoresizingMaskIntoConstraints = false
+        spacer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        spacer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        spacer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 final class ModalViewController<ContentViewController: UIViewController & ScrollViewProviding>: UIViewController {
     
     private let contentViewController = ContentViewController()
     private let contentView = UIView()
     private let spacer = UIView()
-    private let header = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    private let header = ModalHeaderView()
     private let interactor: CardPresentationInteractor
     let headerHeight: CGFloat = 100
 
@@ -52,6 +72,8 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         contentView.clipsToBounds = true
         contentView.layer.cornerRadius = 12
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        
         
         addContentViewController(contentViewController)
         

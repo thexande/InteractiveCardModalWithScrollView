@@ -1,0 +1,6 @@
+framework module Pods_card_modal_scrollview {
+  umbrella header "Pods-card_modal_scrollview-umbrella.h"
+
+  export *
+  module * { export * }
+}

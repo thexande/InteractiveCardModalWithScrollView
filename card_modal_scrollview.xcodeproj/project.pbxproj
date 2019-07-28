@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6091F050CB0563DFD2DA93F4 /* Pods_card_modal_scrollviewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F99E5E0CF27A64355CD35C3 /* Pods_card_modal_scrollviewUITests.framework */; };
+		A4F52942B24182AA675C912B /* Pods_card_modal_scrollviewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28C90B528AB39C435EC0384 /* Pods_card_modal_scrollviewTests.framework */; };
 		B072CBF022EE30140020C18D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CBEF22EE30140020C18D /* AppDelegate.swift */; };
 		B072CBF222EE30140020C18D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CBF122EE30140020C18D /* ViewController.swift */; };
 		B072CBF722EE30160020C18D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B072CBF622EE30160020C18D /* Assets.xcassets */; };
@@ -17,6 +19,7 @@
 		B072CC2022EE3C330020C18D /* CardDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC1F22EE3C330020C18D /* CardDismissAnimator.swift */; };
 		B072CC2222EE3C580020C18D /* CardPresentationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC2122EE3C580020C18D /* CardPresentationInteractor.swift */; };
 		B072CC2422EE3C760020C18D /* PresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC2322EE3C760020C18D /* PresentAnimator.swift */; };
+		E852A77F34557AC9C32699A8 /* Pods_card_modal_scrollview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8935ACEAE78A5A021347E3BF /* Pods_card_modal_scrollview.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F99E5E0CF27A64355CD35C3 /* Pods_card_modal_scrollviewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_card_modal_scrollviewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5908BB727F2F8E9CE0955E /* Pods-card_modal_scrollviewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-card_modal_scrollviewUITests.debug.xcconfig"; path = "Target Support Files/Pods-card_modal_scrollviewUITests/Pods-card_modal_scrollviewUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A6BCB8B419D370BBAA6027C /* Pods-card_modal_scrollviewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-card_modal_scrollviewUITests.release.xcconfig"; path = "Target Support Files/Pods-card_modal_scrollviewUITests/Pods-card_modal_scrollviewUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8935ACEAE78A5A021347E3BF /* Pods_card_modal_scrollview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_card_modal_scrollview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA89E137CD9FD2E6FD967FBB /* Pods-card_modal_scrollviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-card_modal_scrollviewTests.debug.xcconfig"; path = "Target Support Files/Pods-card_modal_scrollviewTests/Pods-card_modal_scrollviewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B072CBEC22EE30140020C18D /* card_modal_scrollview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = card_modal_scrollview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B072CBEF22EE30140020C18D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B072CBF122EE30140020C18D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +61,10 @@
 		B072CC1F22EE3C330020C18D /* CardDismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDismissAnimator.swift; sourceTree = "<group>"; };
 		B072CC2122EE3C580020C18D /* CardPresentationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationInteractor.swift; sourceTree = "<group>"; };
 		B072CC2322EE3C760020C18D /* PresentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimator.swift; sourceTree = "<group>"; };
+		C170EF227C220C8CC3AD356C /* Pods-card_modal_scrollview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-card_modal_scrollview.debug.xcconfig"; path = "Target Support Files/Pods-card_modal_scrollview/Pods-card_modal_scrollview.debug.xcconfig"; sourceTree = "<group>"; };
+		D28C90B528AB39C435EC0384 /* Pods_card_modal_scrollviewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_card_modal_scrollviewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC5C3E188F19D91A667E0761 /* Pods-card_modal_scrollviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-card_modal_scrollviewTests.release.xcconfig"; path = "Target Support Files/Pods-card_modal_scrollviewTests/Pods-card_modal_scrollviewTests.release.xcconfig"; sourceTree = "<group>"; };
+		FC524436798B26C584DCC1FF /* Pods-card_modal_scrollview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-card_modal_scrollview.release.xcconfig"; path = "Target Support Files/Pods-card_modal_scrollview/Pods-card_modal_scrollview.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E852A77F34557AC9C32699A8 /* Pods_card_modal_scrollview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4F52942B24182AA675C912B /* Pods_card_modal_scrollviewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +88,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6091F050CB0563DFD2DA93F4 /* Pods_card_modal_scrollviewUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B2E549D8704681E48DD261A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C170EF227C220C8CC3AD356C /* Pods-card_modal_scrollview.debug.xcconfig */,
+				FC524436798B26C584DCC1FF /* Pods-card_modal_scrollview.release.xcconfig */,
+				AA89E137CD9FD2E6FD967FBB /* Pods-card_modal_scrollviewTests.debug.xcconfig */,
+				DC5C3E188F19D91A667E0761 /* Pods-card_modal_scrollviewTests.release.xcconfig */,
+				2D5908BB727F2F8E9CE0955E /* Pods-card_modal_scrollviewUITests.debug.xcconfig */,
+				7A6BCB8B419D370BBAA6027C /* Pods-card_modal_scrollviewUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		99058F8D5121DC00117925ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8935ACEAE78A5A021347E3BF /* Pods_card_modal_scrollview.framework */,
+				D28C90B528AB39C435EC0384 /* Pods_card_modal_scrollviewTests.framework */,
+				0F99E5E0CF27A64355CD35C3 /* Pods_card_modal_scrollviewUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B072CBE322EE30140020C18D = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +126,8 @@
 				B072CC0322EE30160020C18D /* card_modal_scrollviewTests */,
 				B072CC0E22EE30160020C18D /* card_modal_scrollviewUITests */,
 				B072CBED22EE30140020C18D /* Products */,
+				3B2E549D8704681E48DD261A /* Pods */,
+				99058F8D5121DC00117925ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,9 +182,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B072CC1422EE30160020C18D /* Build configuration list for PBXNativeTarget "card_modal_scrollview" */;
 			buildPhases = (
+				3BE18E775E73CDBBCC5B6E37 /* [CP] Check Pods Manifest.lock */,
 				B072CBE822EE30140020C18D /* Sources */,
 				B072CBE922EE30140020C18D /* Frameworks */,
 				B072CBEA22EE30140020C18D /* Resources */,
+				11946E4B16378255843279B0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -158,6 +201,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B072CC1722EE30170020C18D /* Build configuration list for PBXNativeTarget "card_modal_scrollviewTests" */;
 			buildPhases = (
+				845DC2E56B3294CA4518A77D /* [CP] Check Pods Manifest.lock */,
 				B072CBFC22EE30160020C18D /* Sources */,
 				B072CBFD22EE30160020C18D /* Frameworks */,
 				B072CBFE22EE30160020C18D /* Resources */,
@@ -176,6 +220,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B072CC1A22EE30170020C18D /* Build configuration list for PBXNativeTarget "card_modal_scrollviewUITests" */;
 			buildPhases = (
+				2CCF773F01F076DF06DBB0A6 /* [CP] Check Pods Manifest.lock */,
 				B072CC0722EE30160020C18D /* Sources */,
 				B072CC0822EE30160020C18D /* Frameworks */,
 				B072CC0922EE30160020C18D /* Resources */,
@@ -258,6 +303,97 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11946E4B16378255843279B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-card_modal_scrollview/Pods-card_modal_scrollview-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Anchorage/Anchorage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Anchorage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-card_modal_scrollview/Pods-card_modal_scrollview-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CCF773F01F076DF06DBB0A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-card_modal_scrollviewUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BE18E775E73CDBBCC5B6E37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-card_modal_scrollview-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		845DC2E56B3294CA4518A77D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-card_modal_scrollviewTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B072CBE822EE30140020C18D /* Sources */ = {
@@ -434,6 +570,7 @@
 		};
 		B072CC1522EE30160020C18D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C170EF227C220C8CC3AD356C /* Pods-card_modal_scrollview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +589,7 @@
 		};
 		B072CC1622EE30170020C18D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC524436798B26C584DCC1FF /* Pods-card_modal_scrollview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +608,7 @@
 		};
 		B072CC1822EE30170020C18D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA89E137CD9FD2E6FD967FBB /* Pods-card_modal_scrollviewTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +630,7 @@
 		};
 		B072CC1922EE30170020C18D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC5C3E188F19D91A667E0761 /* Pods-card_modal_scrollviewTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +652,7 @@
 		};
 		B072CC1B22EE30170020C18D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D5908BB727F2F8E9CE0955E /* Pods-card_modal_scrollviewUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +673,7 @@
 		};
 		B072CC1C22EE30170020C18D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A6BCB8B419D370BBAA6027C /* Pods-card_modal_scrollviewUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
