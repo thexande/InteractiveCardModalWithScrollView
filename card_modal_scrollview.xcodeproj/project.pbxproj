@@ -13,6 +13,10 @@
 		B072CBFA22EE30160020C18D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B072CBF822EE30160020C18D /* LaunchScreen.storyboard */; };
 		B072CC0522EE30160020C18D /* card_modal_scrollviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC0422EE30160020C18D /* card_modal_scrollviewTests.swift */; };
 		B072CC1022EE30160020C18D /* card_modal_scrollviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC0F22EE30160020C18D /* card_modal_scrollviewUITests.swift */; };
+		B072CC1E22EE30A10020C18D /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC1D22EE30A10020C18D /* ModalViewController.swift */; };
+		B072CC2022EE3C330020C18D /* CardDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC1F22EE3C330020C18D /* CardDismissAnimator.swift */; };
+		B072CC2222EE3C580020C18D /* CardPresentationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC2122EE3C580020C18D /* CardPresentationInteractor.swift */; };
+		B072CC2422EE3C760020C18D /* PresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072CC2322EE3C760020C18D /* PresentAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		B072CC0B22EE30160020C18D /* card_modal_scrollviewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = card_modal_scrollviewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B072CC0F22EE30160020C18D /* card_modal_scrollviewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = card_modal_scrollviewUITests.swift; sourceTree = "<group>"; };
 		B072CC1122EE30160020C18D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B072CC1D22EE30A10020C18D /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		B072CC1F22EE3C330020C18D /* CardDismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDismissAnimator.swift; sourceTree = "<group>"; };
+		B072CC2122EE3C580020C18D /* CardPresentationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresentationInteractor.swift; sourceTree = "<group>"; };
+		B072CC2322EE3C760020C18D /* PresentAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 				B072CBF622EE30160020C18D /* Assets.xcassets */,
 				B072CBF822EE30160020C18D /* LaunchScreen.storyboard */,
 				B072CBFB22EE30160020C18D /* Info.plist */,
+				B072CC1D22EE30A10020C18D /* ModalViewController.swift */,
+				B072CC1F22EE3C330020C18D /* CardDismissAnimator.swift */,
+				B072CC2122EE3C580020C18D /* CardPresentationInteractor.swift */,
+				B072CC2322EE3C760020C18D /* PresentAnimator.swift */,
 			);
 			path = card_modal_scrollview;
 			sourceTree = "<group>";
@@ -252,7 +264,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B072CC2422EE3C760020C18D /* PresentAnimator.swift in Sources */,
 				B072CBF222EE30140020C18D /* ViewController.swift in Sources */,
+				B072CC1E22EE30A10020C18D /* ModalViewController.swift in Sources */,
+				B072CC2022EE3C330020C18D /* CardDismissAnimator.swift in Sources */,
+				B072CC2222EE3C580020C18D /* CardPresentationInteractor.swift in Sources */,
 				B072CBF022EE30140020C18D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
