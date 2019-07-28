@@ -1,27 +1,55 @@
 import UIKit
+import Anchorage
 
 protocol ScrollViewProviding {
     var scrollView: UIScrollView? { get }
     func setContentInset(_ inset: UIEdgeInsets)
 }
 
-final class ModalHeaderView: UIView {
+protocol ViewRendering {
+    associatedtype Properties
+    func render(_ properties: Properties)
+}
+
+final class ModalHeaderView: UIView, ViewRendering {
+    
+    struct Properties {
+        
+    }
+    
+    func render(_ properties: Properties) {
+        
+    }
     
     private let indicator = UIView()
     private let background = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    private var indicatorWidthConstraint = NSLayoutConstraint()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(background)
-        background.translatesAutoresizingMaskIntoConstraints = false
-        spacer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        spacer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        spacer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        background.edgeAnchors == edgeAnchors
+        
+        addSubview(indicator)
+        indicator.topAnchor == topAnchor + 12
+        indicator.centerXAnchor == centerXAnchor
+        indicator.backgroundColor = .darkGray
+        indicator.heightAnchor == 4
+        indicator.layer.cornerRadius = 2
+        indicatorWidthConstraint = indicator.widthAnchor == 56
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setIndicatorWidth(_ offset: CGFloat) {
+        let width = abs(56 * (120 / offset)) - 56
+        print(width)
+        if width > 12 {
+            indicatorWidthConstraint.constant = width
+        }
     }
 }
 
@@ -32,7 +60,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     private let spacer = UIView()
     private let header = ModalHeaderView()
     private let interactor: CardPresentationInteractor
-    let headerHeight: CGFloat = 100
+    let headerHeight: CGFloat = 64
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +133,14 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     }
     
     @objc private func scrollViewDidScroll(_ sender: UIPanGestureRecognizer) {
-        print((sender.view as? UIScrollView)?.contentOffset)
+        guard let offset = (sender.view as? UIScrollView)?.contentOffset.y else { return }
+        let absoluteOffset = abs(offset)
+       
+        if absoluteOffset > 120 {
+            dismiss(animated: true, completion: nil)
+        }
+        
+        header.setIndicatorWidth(absoluteOffset)
     }
     
     @objc private func handleGesture(_ sender: UIPanGestureRecognizer) {
