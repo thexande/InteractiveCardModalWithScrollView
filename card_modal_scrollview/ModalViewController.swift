@@ -2,6 +2,7 @@ import UIKit
 
 protocol ScrollViewProviding {
     var scrollView: UIScrollView? { get }
+    func setContentInset(_ inset: UIEdgeInsets)
 }
 
 final class ModalViewController<ContentViewController: UIViewController & ScrollViewProviding>: UIViewController {
@@ -11,14 +12,15 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     private let spacer = UIView()
     private let header = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     private let interactor: CardPresentationInteractor
-    
+    let headerHeight: CGFloat = 100
+
     override func viewDidLoad() {
         super.viewDidLoad()
         contentViewController.scrollView?.panGestureRecognizer.addTarget(self, action: #selector(scrollViewDidScroll(_:)))
         view.isOpaque = false
         view.backgroundColor = .clear
         spacer.backgroundColor = .clear
-        spacer.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:))))
+        header.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:))))
         
         view.addSubview(spacer)
         spacer.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +28,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         spacer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         spacer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         spacer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        spacer.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        spacer.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         view.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +43,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         header.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         header.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         header.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        header.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        header.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         
         addContentViewController(contentViewController)
         
@@ -50,7 +52,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     init(cardPresentationInteractor: CardPresentationInteractor) {
         self.interactor = cardPresentationInteractor
         super.init(nibName: nil, bundle: nil)
-        modalPresentationStyle = .overCurrentContext
+        contentViewController.setContentInset(.init(top: headerHeight, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {

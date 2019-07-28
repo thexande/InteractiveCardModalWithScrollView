@@ -3,18 +3,28 @@ import UIKit
 class ViewController: UIViewController {
     
     private let interactor = CardPresentationInteractor()
+    private let button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "modal",
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(didSelectModal))
+        definesPresentationContext = true
+        view.backgroundColor = .white
+        button.addTarget(self, action: #selector(presentModal), for: .touchUpInside)
+        
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18).isActive = true
+        button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 65).isActive = true
+        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 8
+        button.setTitle("Present Modal", for: .normal)
         
     }
 
-    @objc private func didSelectModal() {
+    @objc private func presentModal() {
         let test = ModalViewController<TableContentViewController>(cardPresentationInteractor: interactor)
         test.transitioningDelegate = self
         present(test, animated: true, completion: nil)
@@ -39,8 +49,13 @@ extension ViewController: UIViewControllerTransitioningDelegate {
 }
 
 final class TableContentViewController: UITableViewController, ScrollViewProviding {
+    
     var scrollView: UIScrollView? {
         return tableView
+    }
+    
+    func setContentInset(_ inset: UIEdgeInsets) {
+        tableView.contentInset = inset
     }
 }
 
