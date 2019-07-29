@@ -45,11 +45,7 @@ final class ModalHeaderView: UIView, ViewRendering {
     }
     
     func setIndicatorWidth(_ offset: CGFloat) {
-        let width = abs(56 * (120 / offset)) - 56
-        print(width)
-        if width > 12 {
-            indicatorWidthConstraint.constant = width
-        }
+        indicatorWidthConstraint.constant = offset
     }
 }
 
@@ -61,10 +57,30 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     private let header = ModalHeaderView()
     private let interactor: CardPresentationInteractor
     let headerHeight: CGFloat = 64
+    private var scrollObserver: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentViewController.scrollView?.panGestureRecognizer.addTarget(self, action: #selector(scrollViewDidScroll(_:)))
+//        contentViewController.scrollView?.panGestureRecognizer.addTarget(self, action: #selector(scrollViewDidScroll(_:)))
+        
+        scrollObserver = contentViewController.scrollView?.observe(\UIScrollView.contentOffset, options: .new) { [weak self] scrollView, change in
+            
+            print("content inset \(scrollView.contentInset.top)")
+            guard let myself = self else { return }
+            print("offset \(scrollView.contentOffset.y)")
+            let absoluteOffset = abs(scrollView.contentOffset.y)
+            
+            let indicatorWidth: CGFloat = 56
+            let relativeWidth = indicatorWidth - (((absoluteOffset - myself.headerHeight) / (120 - myself.headerHeight)) * indicatorWidth)
+            print("relative width \(relativeWidth)")
+            
+            if absoluteOffset > 120 {
+                myself.dismiss(animated: true, completion: nil)
+            } else {
+                myself.header.setIndicatorWidth(max(relativeWidth, 24))
+            }
+        }
+        
         view.isOpaque = false
         view.backgroundColor = .clear
         spacer.backgroundColor = .clear
@@ -134,13 +150,18 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     
     @objc private func scrollViewDidScroll(_ sender: UIPanGestureRecognizer) {
         guard let offset = (sender.view as? UIScrollView)?.contentOffset.y else { return }
+        
         let absoluteOffset = abs(offset)
-       
+        
+        let indicatorWidth: CGFloat = 56
+        let relativeWidth = indicatorWidth - (((absoluteOffset - headerHeight) / (120 - headerHeight)) * indicatorWidth)
+        print(relativeWidth)
+        
         if absoluteOffset > 120 {
             dismiss(animated: true, completion: nil)
         }
         
-        header.setIndicatorWidth(absoluteOffset)
+        header.setIndicatorWidth(max(relativeWidth, 12))
     }
     
     @objc private func handleGesture(_ sender: UIPanGestureRecognizer) {
