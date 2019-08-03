@@ -58,15 +58,18 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     private let interactor: CardPresentationInteractor
     let headerHeight: CGFloat = 64
     private var scrollObserver: NSKeyValueObservation?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        contentViewController.scrollView?.panGestureRecognizer.addTarget(self, action: #selector(scrollViewDidScroll(_:)))
-        
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         scrollObserver = contentViewController.scrollView?.observe(\UIScrollView.contentOffset, options: .new) { [weak self] scrollView, change in
             
             print("content inset \(scrollView.contentInset.top)")
-            guard let myself = self else { return }
+            
+            guard
+                let myself = self,
+                scrollView.contentOffset.y < (scrollView.contentInset.top * -1)
+                else { return }
+            
             print("offset \(scrollView.contentOffset.y)")
             let absoluteOffset = abs(scrollView.contentOffset.y)
             
@@ -80,8 +83,13 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
                 myself.header.setIndicatorWidth(max(relativeWidth, 24))
             }
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        contentViewController.scrollView?.panGestureRecognizer.addTarget(self, action: #selector(scrollViewDidScroll(_:)))
         
-        view.isOpaque = false
+                view.isOpaque = false
         view.backgroundColor = .clear
         spacer.backgroundColor = .clear
         header.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:))))
@@ -152,6 +160,8 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         guard let offset = (sender.view as? UIScrollView)?.contentOffset.y else { return }
         
         let absoluteOffset = abs(offset)
+        
+//        guard offset < -64 else { return }
         
         let indicatorWidth: CGFloat = 56
         let relativeWidth = indicatorWidth - (((absoluteOffset - headerHeight) / (120 - headerHeight)) * indicatorWidth)
