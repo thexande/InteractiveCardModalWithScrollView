@@ -24,10 +24,34 @@ final class ViewController: UIViewController {
     }
 
     @objc private func presentModal() {
-        let test = ModalViewController<DefaultCollectionContentViewController>(cardPresentationInteractor: interactor)
+        let test = ModalViewController<NavigationWrappedTable>(cardPresentationInteractor: interactor)
         test.transitioningDelegate = self
         present(test, animated: true, completion: nil)
     }
+}
+
+final class NavigationWrappedTable: NavigationController<TableContentViewController> {
+    
+}
+
+class NavigationController<Wrapped: UIViewController & ScrollViewProviding>: UINavigationController, ScrollViewProviding {
+    
+    var scrollView: UIScrollView? {
+        return wrapped.scrollView
+    }
+    
+    func setContentInset(_ inset: UIEdgeInsets) {
+        wrapped.setContentInset(inset)
+    }
+    
+    
+    let wrapped = Wrapped()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setViewControllers([wrapped], animated: false)
+    }
+    
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
@@ -92,3 +116,44 @@ final class DefaultCollectionContentViewController: UICollectionViewController, 
     }
 }
 
+final class TableContentViewController: UITableViewController, ScrollViewProviding {
+    
+    var scrollView: UIScrollView? {
+        return tableView
+    }
+    
+    func setContentInset(_ inset: UIEdgeInsets) {
+        tableView.contentInset = inset
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell.self))
+        title = "Demo"
+        navigationItem.leftBarButtonItem = .init(title: "Close", style: .done, target: self, action: #selector(didSelectClose))
+    }
+    
+    @objc private func didSelectClose() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self)) else {
+            return UITableViewCell()
+        }
+        
+        cell.textLabel?.text = "Section \(indexPath.section ), Item \(indexPath.item)"
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let test = UIViewController()
+        test.view.backgroundColor = .red
+        
+        navigationController?.pushViewController(test, animated: true)
+    }
+}

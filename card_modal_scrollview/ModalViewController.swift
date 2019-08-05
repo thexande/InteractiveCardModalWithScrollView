@@ -51,16 +51,37 @@ final class ModalHeaderView: UIView, ViewRendering {
 
 final class ModalViewController<ContentViewController: UIViewController & ScrollViewProviding>: UIViewController {
     
+    struct Configuration {
+        static var `default`: Configuration {
+            return .init()
+        }
+    }
+    
+    var configuration: Configuration = .default {
+        didSet {
+            apply(configuration)
+        }
+    }
+    
+    private func apply(_ configuration: Configuration) {
+        print(configuration)
+    }
+    
     private let contentViewController = ContentViewController()
     private let contentView = UIView()
     private let spacer = UIView()
-    private let header = ModalHeaderView()
+    private let header = UIView()
     private let interactor: CardPresentationInteractor
     let headerHeight: CGFloat = 64
     private var scrollObserver: NSKeyValueObservation?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if self.contentViewController is UINavigationController {
+            header.horizontalAnchors == view.horizontalAnchors + 100
+        }
+        
         scrollObserver = contentViewController.scrollView?.observe(\UIScrollView.contentOffset, options: .new) { [weak self] scrollView, change in
             
             print("content inset \(scrollView.contentInset.top)")
@@ -80,7 +101,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
             if absoluteOffset > 120 {
                 myself.dismiss(animated: true, completion: nil)
             } else {
-                myself.header.setIndicatorWidth(max(relativeWidth, 24))
+//                myself.header.setIndicatorWidth(max(relativeWidth, 24))
             }
         }
     }
@@ -112,8 +133,6 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         
         view.addSubview(header)
         header.translatesAutoresizingMaskIntoConstraints = false
-        header.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        header.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         header.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         header.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         
@@ -171,7 +190,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
             dismiss(animated: true, completion: nil)
         }
         
-        header.setIndicatorWidth(max(relativeWidth, 12))
+//        header.setIndicatorWidth(max(relativeWidth, 12))
     }
     
     @objc private func handleGesture(_ sender: UIPanGestureRecognizer) {
