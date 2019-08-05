@@ -24,7 +24,7 @@ final class ViewController: UIViewController {
     }
 
     @objc private func presentModal() {
-        let test = ModalViewController<TableContentViewController>(cardPresentationInteractor: interactor)
+        let test = ModalViewController<DefaultCollectionContentViewController>(cardPresentationInteractor: interactor)
         test.transitioningDelegate = self
         present(test, animated: true, completion: nil)
     }
@@ -47,7 +47,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-final class TableContentViewController: UICollectionViewController, ScrollViewProviding, UICollectionViewDelegateFlowLayout {
+final class DefaultCollectionContentViewController: UICollectionViewController, ScrollViewProviding, UICollectionViewDelegateFlowLayout {
     
     var scrollView: UIScrollView? {
         return collectionView
