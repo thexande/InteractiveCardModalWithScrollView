@@ -52,8 +52,45 @@ final class ModalHeaderView: UIView, ViewRendering {
 final class ModalViewController<ContentViewController: UIViewController & ScrollViewProviding>: UIViewController {
     
     struct Configuration {
+        
+        let headerConfiguration: Header?
+        let modalDisplay: Display
+        let indicatorPosition: IndicatorPosition
+
+        
+        enum Display {
+            case modal(displayPercentage: CGFloat, corner: Corner)
+            case fullScreen
+            
+            enum Corner {
+                case rounded(radius: CGFloat)
+                case square
+            }
+            
+            
+            var spacerHeightFactor: CGFloat {
+                switch self {
+                case .modal(let (displayPercentage, _)):
+                    return displayPercentage
+                case .fullScreen:
+                    return 0
+                }
+            }
+        }
+        
+        enum IndicatorPosition {
+            case aboveModal(distanceFromModalTop: CGFloat)
+            case pinnedToTopOfModal(inset: CGFloat)
+        }
+        
+        struct Header {
+            let title: String
+            let indicatorColor: UIColor
+            let height: CGFloat
+        }
+        
         static var `default`: Configuration {
-            return .init()
+            return .init(headerConfiguration: nil, modalDisplay: .fullScreen)
         }
     }
     
@@ -65,6 +102,28 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
     
     private func apply(_ configuration: Configuration) {
         print(configuration)
+        
+        spacer.heightAnchor == configuration.modalDisplay.spacerHeightFactor * view.heightAnchor
+        
+        switch configuration.modalDisplay {
+        case let .modal(_, corner):
+            
+            if case let .rounded(radius) = corner {
+                contentView.clipsToBounds = true
+                contentView.layer.cornerRadius = radius
+                contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                
+                header.clipsToBounds = true
+                header.layer.cornerRadius = 12
+                header.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            }
+            
+        case .fullScreen:
+            return
+        }
+        
+        
+        
     }
     
     private let contentViewController = ContentViewController()
@@ -121,7 +180,7 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         spacer.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         spacer.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         spacer.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        spacer.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        
         
         view.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -136,18 +195,9 @@ final class ModalViewController<ContentViewController: UIViewController & Scroll
         header.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         header.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         
-        header.clipsToBounds = true
-        header.layer.cornerRadius = 12
-        header.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        contentView.clipsToBounds = true
-        contentView.layer.cornerRadius = 12
-        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        
-        
         addContentViewController(contentViewController)
         
+        configuration = .init(headerConfiguration: nil, modalDisplay: .modal(displayPercentage: 0.3, corner: .rounded(radius: 12)))
     }
     
     init(cardPresentationInteractor: CardPresentationInteractor) {
